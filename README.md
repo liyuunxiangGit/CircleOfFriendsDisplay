@@ -18,7 +18,7 @@
   * 1、通过数据请求的类`GetInfoSection`将数据请求下来保存在数组当中
   * 2、new一个view`ZoneView`并加载在该控制器当中，然后给该view传递数据过去。<br>
   这样就可以做到`隔离数据模型model 和view界面  遵循了低耦合的设计思想`
-  ```Object-C
+  ```c
   -(void)getZonInfo
 {
     //下方模拟的是数据请求  请求下来数组Info
