@@ -12,3 +12,10 @@
 * 【注意】model层和view视图不能直接通信 必须借助controller层<br>
 * `V`: view的缩写 视图层的简称<br>
  * view层主要听从controller的指挥显示model层的数据<br>
+发大水客户交电费
+=============
+SD卡就发生快乐
+------------
+撒垃圾费
+    lsajdflas
+    lasdkjf
