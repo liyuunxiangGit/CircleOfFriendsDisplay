@@ -1,5 +1,5 @@
 # CircleOfFriendsDisplay
-朋友圈的做法
+#####朋友圈的做法
 
 ![展示图](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/111.gif)
 ##[我的博客](http://blog.csdn.net/liyunxiangrxm)
