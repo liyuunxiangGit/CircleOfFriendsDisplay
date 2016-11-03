@@ -20,7 +20,7 @@
   这样就可以做到`隔离数据模型model 和view界面  遵循了低耦合的设计思想`
 
 ```
-  -(void)getZonInfo
+-(void)getZonInfo
 {
     //下方模拟的是数据请求  请求下来数组Info
     NSMutableArray *Info = [GetInfoSection getInfo];
