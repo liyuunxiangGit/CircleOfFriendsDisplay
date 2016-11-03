@@ -14,7 +14,7 @@
 
 @end
 @interface ZoneView : UIView
-@property(nonatomic,strong)NSDictionary *zoneInfo;
+@property(nonatomic,strong)NSArray *zoneInfo;
 @property(nonatomic,assign)BOOL canSendNotice;
 @property(nonatomic,weak)UIViewController *fVC;
 @property(nonatomic,weak)id<ZoneViewDelegate> delegate;

@@ -26,7 +26,7 @@
             startingLineNumber = "206"
             endingLineNumber = "206"
             landmarkName = "-setBodyView"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -36,19 +36,19 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CircleOfFriendsDisplay/ZoneView.m"
-            timestampString = "496315645.544448"
+            timestampString = "499831193.958235"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "-onPressImageView:onDynamicCell:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CircleOfFriendsDisplay/DynamicCell.m"
@@ -58,7 +58,7 @@
             startingLineNumber = "273"
             endingLineNumber = "273"
             landmarkName = "-onPressImage:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -68,13 +68,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CircleOfFriendsDisplay/ZoneView.m"
-            timestampString = "496315645.544448"
+            timestampString = "499831193.958235"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "-onPressImageView:onDynamicCell:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
