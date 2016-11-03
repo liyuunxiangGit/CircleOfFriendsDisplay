@@ -35,6 +35,7 @@
             make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(0, 0, 0, 0));
         }];
     }
+    _zoneView.fVC = self;
     _zoneView.zoneInfo = Info;
 }
 @end

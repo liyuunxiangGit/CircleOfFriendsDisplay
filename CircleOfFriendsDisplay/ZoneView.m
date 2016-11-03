@@ -162,7 +162,6 @@
         
         
     } @catch (NSException *exception) {
-        NSLog(@"%@",exception);
         //        NSLog(@"%@",exception.description);
         
         height = 150;

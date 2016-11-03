@@ -71,20 +71,20 @@
     contentLabel.numberOfLines = 0;
     if (content != nil && content.length > 0 ) {
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
-        paragraphStyle.lineHeightMultiple = 10.f;
-        paragraphStyle.maximumLineHeight = 16.0f;
-        paragraphStyle.minimumLineHeight = 14.0f;
+//        paragraphStyle.lineHeightMultiple = 10.f;
+        paragraphStyle.maximumLineHeight = 18.0f;
+        paragraphStyle.minimumLineHeight = 16.0f;
         paragraphStyle.firstLineHeadIndent = 0.0f;
         paragraphStyle.lineSpacing = 6.0f;
         paragraphStyle.firstLineHeadIndent = 0.0f;
         paragraphStyle.headIndent = 0.0f;
         paragraphStyle.alignment = NSTextAlignmentLeft;
-        
+//
         UIFont *font = [UIFont systemFontOfSize:14];
         NSDictionary *attributes = @{ NSFontAttributeName:font, NSParagraphStyleAttributeName:paragraphStyle};
         contentLabel.attributedText = [[NSAttributedString alloc]initWithString:content attributes:attributes];
-        contentLabel.textColor = [UIColor grayColor];
-        CGSize size = CGSizeMake(bodyViewWidth, 10000.0f);
+        contentLabel.textColor = [UIColor blackColor];
+        CGSize size = CGSizeMake(bodyViewWidth, 1000.0f);
         CGSize finalSize = [contentLabel sizeThatFits:size];
         contentLabel.frame = CGRectMake(0, 0, finalSize.width, finalSize.height);
         
