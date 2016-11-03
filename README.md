@@ -37,7 +37,6 @@
 ```
         
 
-<pre name="code" class="html">
 - (void)viewDidLoad {
     [super viewDidLoad];
      [self getZonInfo];
@@ -58,5 +57,5 @@
     }
     _zoneView.zoneInfo = Info;
 }
-</pre>
+
 
