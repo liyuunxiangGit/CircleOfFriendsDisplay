@@ -36,9 +36,9 @@
 }
 ```
         
-<p style="margin-top: 0px; margin-bottom: 0px; font-size: 16px; line-height: normal; font-family: Menlo; color: rgb(255, 255, 255);">
-</p>
-<pre name="code" class="html">- (void)viewDidLoad {
+
+<pre name="code" class="html">
+- (void)viewDidLoad {
     [super viewDidLoad];
      [self getZonInfo];
 
@@ -59,8 +59,4 @@
     _zoneView.zoneInfo = Info;
 }
 </pre>
-<br />
-<br />
 
-<p>
-</p>
