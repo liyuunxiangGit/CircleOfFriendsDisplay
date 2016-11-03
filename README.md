@@ -37,5 +37,21 @@
 }
 ```
 
-
+####上下拉刷新功能
+* 上下拉刷新用的是MJRefresh 
+ * [MJRefresh](https://github.com/CoderMJLee/MJRefresh#Support%20what%20kinds%20of%20controls%20to%20refresh)
+ * ```
+  //首页动态的下拉与上拉
+        [_zoneTableView addHeaderWithTarget:self action:@selector(dynamicTableViewheaderRereshing) dateKey:@"ClassZonedynamicTableView"];
+        [_zoneTableView addFooterWithTarget:self action:@selector(dynamicTableViewfooterRereshing)];
+        _zoneTableView.headerPullToRefreshText = @"下拉刷新";
+        _zoneTableView.headerReleaseToRefreshText = @"松开刷新";
+        _zoneTableView.headerRefreshingText = @"正在加载";
+        
+        _zoneTableView.footerPullToRefreshText = @"加载更多";
+        _zoneTableView.footerReleaseToRefreshText = @"松开加载";
+        _zoneTableView.footerRefreshingText = @"加载中";
+         _zoneTableView.fd_debugLogEnabled = YES;
+```
+然后再dynamicTableViewheaderRereshing方法中进行数据请求，最终增加到总得数组中，然后tableView reloadDate.
 
