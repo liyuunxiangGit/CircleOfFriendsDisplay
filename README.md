@@ -51,6 +51,7 @@
         _zoneTableView.footerPullToRefreshText = @"加载更多";
         _zoneTableView.footerReleaseToRefreshText = @"松开加载";
         _zoneTableView.footerRefreshingText = @"加载中";
-         _zoneTableView.fd_debugLogEnabled = YES;```
+         _zoneTableView.fd_debugLogEnabled = YES;
+*```
 * 然后再dynamicTableViewheaderRereshing方法中进行数据请求，最终增加到总得数组中，然后tableView reloadDate.
 
