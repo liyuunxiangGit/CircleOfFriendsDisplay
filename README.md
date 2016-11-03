@@ -18,4 +18,21 @@
   * 1、通过数据请求的类`GetInfoSection`将数据请求下来保存在数组当中
   * 2、new一个view`ZoneView`并加载在该控制器当中，然后给该view传递数据过去。<br>
   这样就可以做到`隔离数据模型model 和view界面  遵循了低耦合的设计思想`
+  ```
+  -(void)getZonInfo
+{
+    //下方模拟的是数据请求  请求下来数组Info
+    NSMutableArray *Info = [GetInfoSection getInfo];
+    //将数据传到zoneView(这里传递的数据可以是身份信息，例如id)然后在zoneView中根据该id进行
+    if (_zoneView == nil) {
+        _zoneView = [[ZoneView alloc]init];
+        _zoneView.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.view addSubview:_zoneView];
+        [_zoneView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(0, 0, 0, 0));
+        }];
+    }
+    _zoneView.zoneInfo = Info;
+}
+```Object-C
         
