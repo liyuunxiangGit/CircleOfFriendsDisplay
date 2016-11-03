@@ -12,10 +12,10 @@
 * 【注意】model层和view视图不能直接通信 必须借助controller层<br>
 * `V`: view的缩写 视图层的简称<br>
  * view层主要听从controller的指挥显示model层的数据<br>
-发大水客户交电费
-=============
-SD卡就发生快乐
-------------
-撒垃圾费
-    lsajdflas
-    lasdkjf
+
+####app中用到的MVC设计模式详解
+* 在ViewController控制其中，我么只做了两件事情
+        * 1、通过数据请求的类`GetInfoSection`将数据请求下来保存在数组当中<br>
+        * 2、new一个view`ZoneView`并加载在该控制器当中，然后给该view传递数据过去。
+        这样就可以做到`隔离数据模型model 和view界面  遵循了低耦合的设计思想`
+        
