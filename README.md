@@ -3,7 +3,7 @@
 #####朋友圈的做法
 
 
-![展示图](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/111.gif)
+![展示图](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/111.gif)
 ####[我的博客](http://blog.csdn.net/liyunxiangrxm)
 ##运用MVC设计模式
 ####`MVC` 是苹果公司最热衷的一种架构模式<br>
@@ -57,3 +57,13 @@
 *```
 * 然后再dynamicTableViewheaderRereshing方法中进行数据请求，最终增加到总得数组中，然后tableView reloadDate.
 
+##消息传递的做法（我用的是推送，个推）
+*做朋友圈当然要进行消息的传递（例如评论，点赞等）
+*我的想法就是当我们评论完成点击发送或者return的时候：
+*
+*我的想法就是当我们评论完成点击发送或者return的时候：*
+*我的想法就是当我们评论完成点击发送或者return的时候：*
+*我的想法就是当我们评论完成点击发送或者return的时候：*
+*我的想法就是当我们评论完成点击发送或者return的时候：
+
+##![欢迎star](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/1708447-5ec5b979baec85ae.gif)
