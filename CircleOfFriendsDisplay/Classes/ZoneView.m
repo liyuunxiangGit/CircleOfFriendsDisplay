@@ -191,7 +191,6 @@
         NSString * FileUrl = item.imgs[i];
         NSURL * url = [NSURL URLWithString:FileUrl];
         IDMPhoto *photo = [IDMPhoto photoWithURL:url];
-         photo.caption = @"you can do it!I think you!";
         [photoArray addObject:photo];
     }
     
@@ -200,12 +199,18 @@
     [browser setInitialPageIndex:imageView.tag];
     browser.delegate = self;
     browser.displayActionButton = YES;
-     browser.displayArrowButton = NO;
+    browser.displayArrowButton = NO;
     browser.displayCounterLabel = YES;
-    browser.displayToolbar = YES;
-
+//    browser.useWhiteBackgroundColor = YES;
     browser.actionButtonTitles = @[@"转发到聊天",@"转发到公告",@"收藏",@"保存到手机" ];
     [_fVC presentViewController:browser animated:YES completion:nil ];
+}
+- (void)onLongPressText:(NSString *)text onDynamicCell:(DynamicCell *)cell{
+    LCActionSheet *sheet = [LCActionSheet sheetWithTitle:nil buttonTitles:@[@"收藏", @"转发到聊天", @"转发到公告"] redButtonIndex:-1 delegate:self];
+
+    sheet.tag = Tag_LongPressTextSheetShow;
+    [sheet show];
+
 }
 - (void)onLongPressImageView:(UIImageView *)imageView onDynamicCell:(DynamicCell *)cell{
     LCActionSheet *sheet = [LCActionSheet sheetWithTitle:nil buttonTitles:@[@"收藏", @"转发到聊天", @"转发到公告"] redButtonIndex:-1 delegate:self];
@@ -278,5 +283,12 @@
 //    }
 }
 
+
+
+#pragma mark - 推送处理
+
+- (void)onReceiveNewDynamic:(NSDictionary *)dic{
+    [_zoneTableView headerBeginRefreshing];
+}
 
 @end

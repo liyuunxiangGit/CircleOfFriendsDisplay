@@ -25,6 +25,7 @@
     }
     [self setHeadView];
     [self setBodyView];
+    [self setZanReplyBar];
     [self setFootView];
 
 }
@@ -220,21 +221,19 @@
 }
 - (void)longPressText:(UILongPressGestureRecognizer *)sender{
     NSLog(@"长按");
-//    if (sender.state == UIGestureRecognizerStateBegan){
-//        if (_delegate && [_delegate respondsToSelector:@selector(onLongPressText:onDynamicCell:)]) {
-//            TTTAttributedLabel *label = (TTTAttributedLabel *)sender.view;
-//            [_delegate onLongPressText:label.text onDynamicCell:self];
-//        }
-//    }
+    if (sender.state == UIGestureRecognizerStateBegan){
+        if (_delegate && [_delegate respondsToSelector:@selector(onLongPressText:onDynamicCell:)]) {
+            TTTAttributedLabel *label = (TTTAttributedLabel *)sender.view;
+            [_delegate onLongPressText:label.text onDynamicCell:self];
+        }
+    }
 }
-
--(void)setFootView
+-(void)setZanReplyBar
 {
-    CGFloat bodyViewWidth = SCREEN_WIDTH - 60 - 10;
-     _footView =  [[UIView alloc]initWithFrame:CGRectMake(0, _bodyView.frame.size.height + _bodyView.frame.origin.y, SCREEN_WIDTH, 36)];
+    _zanBarView =  [[UIView alloc]initWithFrame:CGRectMake(0, _bodyView.frame.size.height + _bodyView.frame.origin.y, SCREEN_WIDTH, 36)];
     UILabel *timeLabel = [[UILabel alloc]init];
     timeLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [_footView addSubview:timeLabel];
+    [_zanBarView addSubview:timeLabel];
     float tdlength = 8;
     UIFont *fontsize = [UIFont systemFontOfSize:13];
     UIFont *labelfontsize = [UIFont systemFontOfSize:15];
@@ -247,14 +246,14 @@
     // NSString class method: boundingRectWithSize:options:attributes:context is
     // available only on ios7.0 sdk.
     CGRect rect = [_data.time boundingRectWithSize:CGSizeMake(320, MAXFLOAT)
-                                        options:NSStringDrawingUsesLineFragmentOrigin
-                                     attributes:attributes
-                                        context:nil];
+                                           options:NSStringDrawingUsesLineFragmentOrigin
+                                        attributes:attributes
+                                           context:nil];
     //CGSize labelsize = [nowTime sizeWithFont:[UIFont systemFontOfSize:13] constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
     
     [timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_footView.mas_left).with.offset(60);
-        make.centerY.equalTo(_footView.mas_centerY).with.offset(0);
+        make.left.equalTo(_zanBarView.mas_left).with.offset(60);
+        make.centerY.equalTo(_zanBarView.mas_centerY).with.offset(0);
         make.width.mas_equalTo(rect.size.width+8);
         
     }];
@@ -263,9 +262,218 @@
     timeLabel.font = fontsize;
     
     timeLabel.text = _data.time;
-    [self.contentView addSubview:_footView];
-
+    [self.contentView addSubview:_zanBarView];
     
+    
+#pragma mark 删除按钮
+    //删除按钮从headview迁移到zanReplyBar
+    _deleteBtn = [[UIButton alloc]init];
+    _deleteBtn.translatesAutoresizingMaskIntoConstraints = NO;
+    _deleteBtn.userInteractionEnabled = YES;
+    [_deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
+    _deleteBtn.titleLabel.font = labelfontsize;
+    [_deleteBtn setTitleColor:[UIColor colorWithRed:115.0/255 green:115.0/255 blue:115.0/255 alpha:1] forState:UIControlStateNormal];
+    
+    
+    [_zanBarView addSubview:_deleteBtn];
+    [_deleteBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(timeLabel.mas_right).with.offset(tdlength);
+        make.centerY.equalTo(_zanBarView.mas_centerY).with.offset(0);
+        
+        make.width.mas_equalTo(40);
+        make.height.mas_equalTo(40);
+    }];
+    
+    
+    [_deleteBtn setContentMode:UIViewContentModeCenter];
+    
+    [_deleteBtn addTarget:self action:@selector(onPressDelete:) forControlEvents:UIControlEventTouchDown];
+    _deleteBtn.hidden = NO;
+    
+//    NSInteger msgPower = [_dynamicPower[@"msgPower"] integerValue];
+//    AccountModel *model = [AccountModel readSingleModelForKey:Key_LoginUserInfo];
+//    BOOL isMeSend = false;
+//    isMeSend = false;
+//    //判断是不是自己发的
+//    if (model.accountId == _data.msg.creatorId) {
+//        isMeSend = YES;
+//    }
+//    
+//    if (isMeSend) {
+//        _deleteBtn.hidden = NO;
+//    }else if(msgPower == 2||msgPower == 3){
+//        _deleteBtn.hidden = NO;
+//    }else{
+//        _deleteBtn.hidden = YES;
+//    }
+    
+//    if (_data.msgType == 1) {
+//        _deleteBtn.hidden = YES;
+//    }
+
+#pragma mark 评论按钮
+//    replyPower暂时注释  这里是根据该值的不同是否让评论存在
+//    NSInteger replyPower = [[_dynamicPower objectForKey:@"replyPower"]integerValue];
+    
+    //评论标签添加,gkb
+    UILabel *replyLabel = [[UILabel alloc]init];
+    [replyLabel setText:@"评论"];
+    replyLabel.font = labelfontsize;
+    replyLabel.textColor = [UIColor colorWithRed:115.0/255 green:115.0/255 blue:115.0/255 alpha:1];
+    replyLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [_zanBarView addSubview:replyLabel];
+    [replyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(_zanBarView.mas_centerY).with.offset(0);
+//        if(replyPower == 1 || replyPower == 3)
+            make.right.equalTo(_zanBarView.mas_right).with.offset(-10);
+//        else
+//            make.right.equalTo(_zanBarView.mas_right).with.offset(50);
+        make.width.mas_equalTo(38);
+        make.height.mas_equalTo(38);
+    }];
+    [replyLabel setContentMode:UIViewContentModeCenter];
+    replyLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer*tapGestureGKB = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onPressReply:)];
+    [replyLabel addGestureRecognizer:tapGestureGKB];
+    
+    
+    _replyBtn = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"评论"]];
+    _replyBtn.translatesAutoresizingMaskIntoConstraints = NO;
+    [_zanBarView addSubview:_replyBtn];
+    [_replyBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(_zanBarView.mas_centerY).with.offset(0);
+//        if(replyPower == 1 || replyPower == 3)
+            make.right.equalTo(replyLabel.mas_left).with.offset(4);
+//        else
+//            make.right.equalTo(_zanBarView.mas_right).with.offset(50);
+        make.width.mas_equalTo(28);
+        make.height.mas_equalTo(28);
+    }];
+    [_replyBtn setContentMode:UIViewContentModeCenter];
+    _replyBtn.userInteractionEnabled = YES;
+    UITapGestureRecognizer*tapGesture1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onPressReply:)];
+    
+    //zanlabel距离评论图标的距离，320*568分辨率特殊处理
+    float length = 15;
+    if(SCREEN_WIDTH == 320){
+        length = 15;
+    }
+#pragma mark 点赞按钮
+    //赞标签添加,gkb
+    UILabel *zanLabel = [[UILabel alloc]init];
+    [zanLabel setText:@"赞"];
+    zanLabel.font = labelfontsize;
+    zanLabel.textColor = [UIColor colorWithRed:115.0/255 green:115.0/255 blue:115.0/255 alpha:1];
+    zanLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [_zanBarView addSubview:zanLabel];
+    [zanLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(_zanBarView.mas_centerY).with.offset(0);
+//        if(replyPower == 1 || replyPower == 3)
+            make.right.equalTo(_replyBtn.mas_left).with.offset(length);
+//        else
+//            make.right.equalTo(_zanBarView.mas_right).with.offset(0);
+        make.width.mas_equalTo(38);
+        make.height.mas_equalTo(38);
+    }];
+    [zanLabel setContentMode:UIViewContentModeCenter];
+    zanLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer*tapGestureGKB2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onPressZan:)];
+    [zanLabel addGestureRecognizer:tapGestureGKB2];
+    
+    [_replyBtn addGestureRecognizer:tapGesture1];
+//    if(replyPower == 1 || replyPower == 3)
+        _replyBtn.hidden = NO;
+//    else
+//        _replyBtn.hidden = YES;
+    BOOL beZan = [self didZan];
+//    NSString *imageName = beZan?@"赞-按下":@"赞";
+    NSString *imageName = @"评论-点赞";
+    _zanBtn = [[UIImageView alloc]initWithImage:[UIImage imageNamed:imageName]];
+    _zanBtn.translatesAutoresizingMaskIntoConstraints = NO;
+    _zanBtn.tag = beZan?1:0;
+    [_zanBarView addSubview:_zanBtn];
+    [_zanBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(_zanBarView.mas_centerY).with.offset(0);
+//        if(replyPower == 1 || replyPower == 3)
+//            make.right.equalTo(zanLabel.mas_left).with.offset(0);
+//        else
+            make.right.equalTo(_zanBarView.mas_right).with.offset(-95);
+        make.width.mas_equalTo(28);
+        make.height.mas_equalTo(28);
+    }];
+    [_zanBtn setContentMode:UIViewContentModeCenter];
+    
+    _zanBtn.userInteractionEnabled = YES;
+    UITapGestureRecognizer*tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onPressZan:)];
+    
+    [_zanBtn addGestureRecognizer:tapGesture];
+    
+    [self.contentView addSubview:_zanBarView];
+//    if (_data.msgType == 0) {
+        _zanBtn.hidden = NO;
+//        }else
+//        {
+//        _zanBtn.hidden = YES;
+//        }
+//    if ([_data.status isEqualToString:@"2"]) {
+//            //显示发送失败
+//            UILabel *errLabel = [[UILabel alloc]init];
+//            errLabel.backgroundColor = UIColorFromRGB(0xffa3a3);
+//            errLabel.font = [UIFont systemFontOfSize:12];
+//            errLabel.textColor = [UIColor whiteColor];
+//            errLabel.text = @"重新上传";
+//            errLabel.layer.cornerRadius = 5;
+//            errLabel.clipsToBounds = YES;
+//            errLabel.textAlignment = NSTextAlignmentCenter;
+//            errLabel.translatesAutoresizingMaskIntoConstraints = NO;
+//            [_zanBarView addSubview:errLabel];
+//            [errLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.centerY.equalTo(_zanBarView.mas_centerY).with.offset(0);
+//                make.left.equalTo(_zanBarView.mas_left).with.offset(60);
+//                make.height.mas_equalTo(@20);
+//                make.width.mas_equalTo(@60);
+//            }];
+//            
+//            errLabel.userInteractionEnabled = YES;
+//            UITapGestureRecognizer*tapGestureRe = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onPressResend)];
+//            
+//            [errLabel addGestureRecognizer:tapGestureRe];
+//        }
+//    }
+    
+}
+//是否赞过
+- (BOOL)didZan{
+//    AccountModel *model = [AccountModel readSingleModelForKey:Key_LoginUserInfo];
+//    if (model == nil) {
+//        return NO;
+//    }
+//    for (Zans *zan in _data.zans) {
+//        if (zan.creatorId == model.accountId) {
+//            return YES;
+//        }
+//    }
+    return NO;
+}
+
+-(void)setFootView
+{
+    
+}
+- (void)onPressZan:(id)sender{
+    if (_delegate && [_delegate respondsToSelector:@selector(onPressZanBtnOnDynamicCell:)]) {
+        [_delegate onPressZanBtnOnDynamicCell:self];
+    }
+}
+- (void)onPressDelete:(id)sender{
+    if (_delegate && [_delegate respondsToSelector:@selector(onPressDeleteBtnOnDynamicCell:)]) {
+        [_delegate onPressDeleteBtnOnDynamicCell:self];
+    }
+}
+- (void)onPressReply:(id)sender{
+    if (_delegate && [_delegate respondsToSelector:@selector(onPressReplyBtnOnDynamicCell:)]) {
+        [_delegate onPressReplyBtnOnDynamicCell:self];
+    }
 }
 - (void)onPressImage:(UITapGestureRecognizer *)sender{
 
@@ -286,7 +494,7 @@
 }
 - (CGSize)sizeThatFits:(CGSize)size{
 
-        return CGSizeMake(SCREEN_WIDTH, _footView.frame.size.height +  _footView.frame.origin.y+10);
+        return CGSizeMake(SCREEN_WIDTH, _zanBarView.frame.size.height +  _zanBarView.frame.origin.y+10);
     
 }
 @end

@@ -35,10 +35,16 @@
 
 @interface DynamicCell : UITableViewCell
 @property(nonatomic,strong)UIImageView *headView;
+@property(nonatomic,strong)UIButton *deleteBtn;
 @property(nonatomic,strong)UIView *bodyView;
+@property(nonatomic,strong)UIView *zanBarView;
 @property(nonatomic,strong)UIView *footView;
 @property(nonatomic,strong)UILabel *fromName;
 @property(nonatomic,strong)DynamicItem *data;
+
+@property(nonatomic,strong)UIImageView *zanBtn;
+@property(nonatomic,strong)UIImageView *replyBtn;
+@property(nonatomic,strong)NSDictionary *dynamicPower;
 
 @property(nonatomic,weak)id<DynamicCellDelegate> delegate;
 @property(nonatomic,strong)NSMutableArray *imgArray;

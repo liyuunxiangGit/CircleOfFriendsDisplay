@@ -27,6 +27,7 @@
 @property (nonatomic, strong) NSArray *commentList;
 
 
+
 -(id)initWithDict:(NSDictionary *)dict;
 +(id)dynamicWithDict:(NSDictionary *)dict;
 
