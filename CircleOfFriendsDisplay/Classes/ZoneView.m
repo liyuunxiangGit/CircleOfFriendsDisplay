@@ -13,17 +13,22 @@
 #import "MJRefresh.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "IDMPhotoBrowser.h"
-
+#import "ZoneReplyView.h"
 #define Tag_MyReplySheetShow 0x01
 #define Tag_LongPressTextSheetShow 0x02
 #define Tag_LongPressPicSheetShow 0x03
 #define Tag_CoverViewSheetShow 0x04
 #define Tag_LongPressShareUrlShow 0x05
 #define Tag_CopyMyReplySheetShow 0x06
-@interface ZoneView()<UITableViewDataSource,UITableViewDelegate,DynamicCellDelegate,IDMPhotoBrowserDelegate,LCActionSheetDelegate>
+
+//获取屏幕 宽度、高度
+#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
+#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
+@interface ZoneView()<UITableViewDataSource,UITableViewDelegate,DynamicCellDelegate,IDMPhotoBrowserDelegate,LCActionSheetDelegate,ZoneReplyViewDelegate,UITextFieldDelegate>
 
 @property(nonatomic,strong)UITableView *zoneTableView;
 @property(nonatomic,strong)NSMutableArray *dynamics;
+@property(nonatomic,strong)ZoneReplyView *replyView;
 
 @end
 @implementation ZoneView
@@ -285,6 +290,37 @@
 
 
 
+- (void)showReplyViewWithCell:(DynamicCell *)cell andLabelView:(UIView *)view{
+    ZoneReplyView *replyView = [self getReplyView];
+    if (_replyView.isShow == YES) {
+        [_replyView.input resignFirstResponder];
+        _replyView.isShow = NO;
+        return;
+    }
+    CGRect frame = replyView.frame;
+    replyView.replyCell = cell;
+    replyView.replyLabelView = view;
+    
+    frame.origin.y = SCREEN_HEIGHT - 46 - 248;
+    replyView.frame = frame;
+    [self addSubview:replyView];
+    [replyView.input becomeFirstResponder];
+}
+- (ZoneReplyView *)getReplyView{
+    if (_replyView == nil) {
+        NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"ZoneReply" owner:self options:nil];
+        _replyView  = [nib objectAtIndex:0];
+        _replyView.frame = CGRectMake(0, SCREEN_HEIGHT - 46 - 248, SCREEN_WIDTH, 46);
+        _replyView.delegate = self;
+        _replyView.input.delegate=self;
+        _replyView.isShow = NO;
+    }
+    return _replyView;
+}
+#pragma mark - cell委托
+- (void)onPressReplyBtnOnDynamicCell:(DynamicCell *)cell{
+    [self showReplyViewWithCell:cell andLabelView:nil];
+}
 #pragma mark - 推送处理
 
 - (void)onReceiveNewDynamic:(NSDictionary *)dic{

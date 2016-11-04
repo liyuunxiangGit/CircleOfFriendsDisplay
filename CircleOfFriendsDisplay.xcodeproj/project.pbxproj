@@ -212,6 +212,8 @@
 		514C69A01DCC352700531B2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 514C699D1DCC352700531B2C /* Main.storyboard */; };
 		514C69A31DCC37BF00531B2C /* 赞-按下@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 514C69A11DCC37BF00531B2C /* 赞-按下@2x.png */; };
 		514C69A41DCC37BF00531B2C /* 赞-按下@x.png in Resources */ = {isa = PBXBuildFile; fileRef = 514C69A21DCC37BF00531B2C /* 赞-按下@x.png */; };
+		514C69A81DCC3B1900531B2C /* ZoneReply.xib in Resources */ = {isa = PBXBuildFile; fileRef = 514C69A51DCC3B1900531B2C /* ZoneReply.xib */; };
+		514C69A91DCC3B1900531B2C /* ZoneReplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C69A71DCC3B1900531B2C /* ZoneReplyView.m */; };
 		51F6F55C1D9518BA003864BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F6F55B1D9518BA003864BD /* CoreGraphics.framework */; };
 		51F6F55E1D9518C3003864BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F6F55D1D9518C3003864BD /* UIKit.framework */; };
 		51FC21531D936FE90002E3FF /* CircleOfFriendsDisplayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51FC21521D936FE90002E3FF /* CircleOfFriendsDisplayTests.m */; };
@@ -554,6 +556,9 @@
 		514C699E1DCC352700531B2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		514C69A11DCC37BF00531B2C /* 赞-按下@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "赞-按下@2x.png"; path = "../赞-按下@2x.png"; sourceTree = "<group>"; };
 		514C69A21DCC37BF00531B2C /* 赞-按下@x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "赞-按下@x.png"; path = "../赞-按下@x.png"; sourceTree = "<group>"; };
+		514C69A51DCC3B1900531B2C /* ZoneReply.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneReply.xib; sourceTree = "<group>"; };
+		514C69A61DCC3B1900531B2C /* ZoneReplyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneReplyView.h; sourceTree = "<group>"; };
+		514C69A71DCC3B1900531B2C /* ZoneReplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneReplyView.m; sourceTree = "<group>"; };
 		51F6F55B1D9518BA003864BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		51F6F55D1D9518C3003864BD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		51FC21351D936FE80002E3FF /* CircleOfFriendsDisplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CircleOfFriendsDisplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -595,6 +600,9 @@
 		514C67791DCC32E200531B2C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				514C69A51DCC3B1900531B2C /* ZoneReply.xib */,
+				514C69A61DCC3B1900531B2C /* ZoneReplyView.h */,
+				514C69A71DCC3B1900531B2C /* ZoneReplyView.m */,
 				514C677A1DCC32E200531B2C /* DynamicCell.h */,
 				514C677B1DCC32E200531B2C /* DynamicCell.m */,
 				514C677C1DCC32E200531B2C /* DynamicItem.h */,
@@ -1305,6 +1313,7 @@
 				514C69241DCC32EA00531B2C /* zem32.png in Resources */,
 				514C692E1DCC32EA00531B2C /* zem41.png in Resources */,
 				514C69451DCC32EB00531B2C /* zem62.png in Resources */,
+				514C69A81DCC3B1900531B2C /* ZoneReply.xib in Resources */,
 				514C67901DCC32E600531B2C /* 评论-点赞.png in Resources */,
 				514C69541DCC32EB00531B2C /* zem76.png in Resources */,
 				514C69311DCC32EA00531B2C /* zem44.png in Resources */,
@@ -1453,6 +1462,7 @@
 				514C696C1DCC32EB00531B2C /* POPCGUtils.mm in Sources */,
 				514C69791DCC32EB00531B2C /* SDImageCache.m in Sources */,
 				514C69051DCC32EA00531B2C /* UIView+MJExtension.m in Sources */,
+				514C69A91DCC3B1900531B2C /* ZoneReplyView.m in Sources */,
 				514C68F31DCC32EA00531B2C /* MASCompositeConstraint.m in Sources */,
 				514C696E1DCC32EB00531B2C /* POPDecayAnimation.mm in Sources */,
 				514C67841DCC32E200531B2C /* DynamicCell.m in Sources */,
