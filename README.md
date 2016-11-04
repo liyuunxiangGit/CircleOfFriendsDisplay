@@ -1,5 +1,7 @@
 # CircleOfFriendsDisplay
+######一直在更新，欢迎star   欢迎提bug以便改进  以便互相进步
 #####朋友圈的做法
+
 
 ![展示图](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/111.gif)
 ####[我的博客](http://blog.csdn.net/liyunxiangrxm)
