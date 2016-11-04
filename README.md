@@ -58,12 +58,10 @@
 * 然后再dynamicTableViewheaderRereshing方法中进行数据请求，最终增加到总得数组中，然后tableView reloadDate.
 
 ##消息传递的做法（我用的是推送，个推）
-*做朋友圈当然要进行消息的传递（例如评论，点赞等）
-*我的想法就是当我们评论完成点击发送或者return的时候：
-*
-*我的想法就是当我们评论完成点击发送或者return的时候：*
-*我的想法就是当我们评论完成点击发送或者return的时候：*
-*我的想法就是当我们评论完成点击发送或者return的时候：*
-*我的想法就是当我们评论完成点击发送或者return的时候：
+* 做朋友圈当然要进行消息的传递（例如评论，点赞等）
+* 我的想法就是当我们评论完成点击发送或者return的时候：
+ *  
 
-##![欢迎star](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/1708447-5ec5b979baec85ae.gif)
+
+##   
+![欢迎star](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/1708447-5ec5b979baec85ae.gif)
