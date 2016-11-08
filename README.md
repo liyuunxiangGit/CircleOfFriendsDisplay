@@ -69,5 +69,6 @@
 * 基本就是这样一个流程，接下来讲讲推送。
 
 
+![讲解小视频](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/小视频-班级圈发送/index.html)
 ##   
 ![欢迎star](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/1708447-5ec5b979baec85ae.gif)
