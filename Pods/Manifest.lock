@@ -1,0 +1,21 @@
+PODS:
+  - DQAlertView (1.2.1)
+  - Masonry (0.6.4)
+  - MBProgressHUD (0.9.2)
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
+
+DEPENDENCIES:
+  - DQAlertView (~> 1.2.1)
+  - Masonry (~> 0.6.2)
+  - MBProgressHUD (~> 0.9.1)
+  - SDWebImage (~> 3.7.3)
+
+SPEC CHECKSUMS:
+  DQAlertView: 438c2799ae5437f2f9683f8a627314aa91eb5032
+  Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+
+COCOAPODS: 0.39.0

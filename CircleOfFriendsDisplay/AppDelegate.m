@@ -7,6 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
+#import "YBNetWorkInfo.h"
+#define kNotifierNetStatus @"NetStatusMonitor"
+#define kNotifierBeginAllTask @"beginAllTask"
+#define kNotifierNetValid @"kNotifierNetValid"
+#define  WEAKSELF  __weak __typeof(self)weakSelf = self;
 
 @interface AppDelegate ()
 
@@ -17,9 +23,37 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+    UINavigationController *nav = [[UINavigationController alloc]init];
+    ViewController *vc = [[ViewController alloc]init];
+    [nav addChildViewController:vc];
+    self.window.rootViewController = nav;
+    
     return YES;
 }
-
+- (void)setNetMonitor{
+    WEAKSELF;
+    [[AFNetworkReachabilityManager sharedManager]setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        //       DDLogInfo(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
+        NSDictionary *dic = @{@"status":[NSNumber numberWithInteger:status]};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotifierNetStatus object:dic];
+        
+        if (status == AFNetworkReachabilityStatusReachableViaWiFi) {
+            weakSelf.netType = @"wifi";
+        }else if (status == AFNetworkReachabilityStatusReachableViaWWAN){
+            weakSelf.netType = [YBNetWorkInfo getNetInfo];
+        }else{
+            weakSelf.netType = @"invalid";
+        }
+        if (status == AFNetworkReachabilityStatusReachableViaWWAN || status == AFNetworkReachabilityStatusReachableViaWiFi) {
+            //发送网络可用通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotifierNetValid object:nil];
+        }
+    }];
+    
+    [[AFNetworkReachabilityManager sharedManager]startMonitoring];
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

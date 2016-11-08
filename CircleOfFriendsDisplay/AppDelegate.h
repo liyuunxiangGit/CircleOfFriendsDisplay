@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "AFNetworking.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-
+@property (copy, nonatomic) NSString *netType;  //网络环境 wifi,3g,4g,2g
 @end
 
