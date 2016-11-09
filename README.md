@@ -69,7 +69,7 @@
 * 基本就是这样一个流程，接下来讲讲推送。
 
 ##新增小视频功能：
-[讲解小视频](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/小视频-班级圈发送/index.html)
+[讲解小视频](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/小视频-班级圈发送/index.html)<br>
 ![image](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/IMG_1470.PNG)
 ![image](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/IMG_1471.PNG)
 ![image](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/IMG_1472.PNG)
