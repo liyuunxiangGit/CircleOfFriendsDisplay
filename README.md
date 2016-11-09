@@ -3,7 +3,7 @@
 #####朋友圈的做法
 
 
-![展示图](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/111.gif)
+![展示图](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/112.gif)
 ####[我的博客](http://blog.csdn.net/liyunxiangrxm)
 ##运用MVC设计模式
 ####`MVC` 是苹果公司最热衷的一种架构模式<br>
@@ -68,7 +68,11 @@
    数据的刷新。
 * 基本就是这样一个流程，接下来讲讲推送。
 
-
+##新增小视频功能：
 [讲解小视频](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/小视频-班级圈发送/index.html)
+![image](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/IMG_1470.PNG)
+![image](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/IMG_1471.PNG)
+![image](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/IMG_1472.PNG)
+![image](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/IMG_1473.PNG)
 ##   
 ![欢迎star](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/1708447-5ec5b979baec85ae.gif)
