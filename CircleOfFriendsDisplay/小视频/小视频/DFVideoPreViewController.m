@@ -102,9 +102,13 @@
     UIButton  *retakeBtn = [UIButton buttonWithType: UIButtonTypeCustom];
     retakeBtn.frame = CGRectMake(x, y, width, height);
     //[retakeBtn setTitle:@"重拍" forState:UIControlStateNormal];
+    [retakeBtn setBackgroundColor:[UIColor redColor]];
     [retakeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [retakeBtn setBackgroundImage:[UIImage imageNamed:@"重拍默认"] forState:UIControlStateNormal];
-    [retakeBtn setBackgroundImage:[UIImage imageNamed:@"重拍绿"] forState:UIControlStateHighlighted];
+//    [retakeBtn setBackgroundImage:[UIImage imageNamed:@"重拍默认"] forState:UIControlStateNormal];
+//    [retakeBtn setBackgroundImage:[UIImage imageNamed:@"重拍绿"] forState:UIControlStateHighlighted];
+    [retakeBtn setTitle:@"重拍" forState:UIControlStateNormal];
+    [retakeBtn setBackgroundImage:[UIImage imageNamed:@"重拍"] forState:UIControlStateHighlighted];
+    
     [retakeBtn addTarget:self action:@selector(retakeBtn_click:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:retakeBtn];
 
@@ -114,8 +118,12 @@
     sendBtn.frame = CGRectMake(x, y, width, height);
     //[sendBtn setTitle:@"发送" forState:UIControlStateNormal];
     [sendBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [sendBtn setBackgroundImage:[UIImage imageNamed:@"发送默认"] forState:UIControlStateNormal];
-    [sendBtn setBackgroundImage:[UIImage imageNamed:@"发送绿"] forState:UIControlStateHighlighted];
+//    [sendBtn setBackgroundImage:[UIImage imageNamed:@"发送默认"] forState:UIControlStateNormal];
+//    [sendBtn setBackgroundImage:[UIImage imageNamed:@"发送绿"] forState:UIControlStateHighlighted];
+    [sendBtn setBackgroundColor:[UIColor greenColor]];
+    [sendBtn setTitle:@"发送" forState:UIControlStateNormal];
+    [sendBtn setBackgroundImage:[UIImage imageNamed:@"发送"] forState:UIControlStateHighlighted];
+    
     [sendBtn addTarget:self action:@selector(sendBtn_click:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:sendBtn];
     

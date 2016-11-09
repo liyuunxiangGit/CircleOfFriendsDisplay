@@ -186,6 +186,11 @@
 		514C69A41DCC37BF00531B2C /* 赞-按下@x.png in Resources */ = {isa = PBXBuildFile; fileRef = 514C69A21DCC37BF00531B2C /* 赞-按下@x.png */; };
 		514C69A81DCC3B1900531B2C /* ZoneReply.xib in Resources */ = {isa = PBXBuildFile; fileRef = 514C69A51DCC3B1900531B2C /* ZoneReply.xib */; };
 		514C69A91DCC3B1900531B2C /* ZoneReplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C69A71DCC3B1900531B2C /* ZoneReplyView.m */; };
+		514F33F11DD2FAFB00E26C45 /* 发送.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F33EC1DD2FAFB00E26C45 /* 发送.png */; };
+		514F33F21DD2FAFB00E26C45 /* 发送@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F33ED1DD2FAFB00E26C45 /* 发送@2x.png */; };
+		514F33F31DD2FAFB00E26C45 /* 重拍.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F33EE1DD2FAFB00E26C45 /* 重拍.png */; };
+		514F33F41DD2FAFB00E26C45 /* 发送@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F33EF1DD2FAFB00E26C45 /* 发送@3x.png */; };
+		514F33F51DD2FAFB00E26C45 /* 重拍@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 514F33F01DD2FAFB00E26C45 /* 重拍@2x.png */; };
 		5170815F1DD1B42A00DCED48 /* MLLabel+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 517080551DD1B42A00DCED48 /* MLLabel+Size.m */; };
 		517081601DD1B42A00DCED48 /* NSMutableDictionary+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 517080571DD1B42A00DCED48 /* NSMutableDictionary+JSON.m */; };
 		517081611DD1B42A00DCED48 /* UIBarButtonItem+Lite.m in Sources */ = {isa = PBXBuildFile; fileRef = 5170805A1DD1B42A00DCED48 /* UIBarButtonItem+Lite.m */; };
@@ -612,6 +617,11 @@
 		514C69A51DCC3B1900531B2C /* ZoneReply.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneReply.xib; sourceTree = "<group>"; };
 		514C69A61DCC3B1900531B2C /* ZoneReplyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneReplyView.h; sourceTree = "<group>"; };
 		514C69A71DCC3B1900531B2C /* ZoneReplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneReplyView.m; sourceTree = "<group>"; };
+		514F33EC1DD2FAFB00E26C45 /* 发送.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "发送.png"; sourceTree = "<group>"; };
+		514F33ED1DD2FAFB00E26C45 /* 发送@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "发送@2x.png"; sourceTree = "<group>"; };
+		514F33EE1DD2FAFB00E26C45 /* 重拍.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "重拍.png"; sourceTree = "<group>"; };
+		514F33EF1DD2FAFB00E26C45 /* 发送@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "发送@3x.png"; sourceTree = "<group>"; };
+		514F33F01DD2FAFB00E26C45 /* 重拍@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "重拍@2x.png"; sourceTree = "<group>"; };
 		517080541DD1B42A00DCED48 /* MLLabel+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MLLabel+Size.h"; sourceTree = "<group>"; };
 		517080551DD1B42A00DCED48 /* MLLabel+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MLLabel+Size.m"; sourceTree = "<group>"; };
 		517080561DD1B42A00DCED48 /* NSMutableDictionary+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+JSON.h"; sourceTree = "<group>"; };
@@ -910,6 +920,11 @@
 		514C67891DCC32E600531B2C /* images */ = {
 			isa = PBXGroup;
 			children = (
+				514F33EC1DD2FAFB00E26C45 /* 发送.png */,
+				514F33ED1DD2FAFB00E26C45 /* 发送@2x.png */,
+				514F33EE1DD2FAFB00E26C45 /* 重拍.png */,
+				514F33EF1DD2FAFB00E26C45 /* 发送@3x.png */,
+				514F33F01DD2FAFB00E26C45 /* 重拍@2x.png */,
 				514C69A11DCC37BF00531B2C /* 赞-按下@2x.png */,
 				514C69A21DCC37BF00531B2C /* 赞-按下@x.png */,
 				514C678A1DCC32E600531B2C /* 评论-点赞.png */,
@@ -2129,6 +2144,7 @@
 				514C69551DCC32EB00531B2C /* zem77.png in Resources */,
 				5170817B1DD1B42A00DCED48 /* AlbumOperateMoreHL@2x.png in Resources */,
 				514C69471DCC32EB00531B2C /* zem64.png in Resources */,
+				514F33F11DD2FAFB00E26C45 /* 发送.png in Resources */,
 				514C69511DCC32EB00531B2C /* zem73.png in Resources */,
 				514C68EF1DCC32EA00531B2C /* bgImage_HL@2x.png in Resources */,
 				5170817A1DD1B42A00DCED48 /* AlbumOperateMore@3x.png in Resources */,
@@ -2136,6 +2152,7 @@
 				517081BD1DD1B42A00DCED48 /* photo_sel_previewVc@2x.png in Resources */,
 				514C691E1DCC32EA00531B2C /* zem27.png in Resources */,
 				517081831DD1B42A00DCED48 /* LikeCmtBg@3x.png in Resources */,
+				514F33F41DD2FAFB00E26C45 /* 发送@3x.png in Resources */,
 				514C690C1DCC32EA00531B2C /* zem10000.png in Resources */,
 				514C67911DCC32E600531B2C /* 评论-点赞@2x.png in Resources */,
 				517081B41DD1B42A00DCED48 /* MMVideoPreviewPlay@2x.png in Resources */,
@@ -2188,6 +2205,7 @@
 				514C67941DCC32E600531B2C /* 评论@2x.png in Resources */,
 				514C69151DCC32EA00531B2C /* zem19.png in Resources */,
 				517081DD1DD1B42A00DCED48 /* MJPhotoBrowser.bundle in Resources */,
+				514F33F21DD2FAFB00E26C45 /* 发送@2x.png in Resources */,
 				514C68F01DCC32EA00531B2C /* cellLine@2x.png in Resources */,
 				517081B71DD1B42A00DCED48 /* photo_def_photoPickerVc@2x.png in Resources */,
 				514C69391DCC32EB00531B2C /* zem51.png in Resources */,
@@ -2197,6 +2215,7 @@
 				514C69571DCC32EB00531B2C /* zem79.png in Resources */,
 				514C69611DCC32EB00531B2C /* pop-ios-Info.plist in Resources */,
 				514C691D1DCC32EA00531B2C /* zem26.png in Resources */,
+				514F33F31DD2FAFB00E26C45 /* 重拍.png in Resources */,
 				514C67921DCC32E600531B2C /* 评论-点赞@3x.png in Resources */,
 				514C69281DCC32EA00531B2C /* zem36.png in Resources */,
 				514C692C1DCC32EA00531B2C /* zem4.png in Resources */,
@@ -2238,6 +2257,7 @@
 				514C69421DCC32EB00531B2C /* zem6.png in Resources */,
 				514C698A1DCC32EB00531B2C /* LICENSE in Resources */,
 				517081AD1DD1B42A00DCED48 /* success@2x.png in Resources */,
+				514F33F51DD2FAFB00E26C45 /* 重拍@2x.png in Resources */,
 				517081A51DD1B42A00DCED48 /* ClippedExpression.bundle in Resources */,
 				514C695C1DCC32EB00531B2C /* expression_custom.plist in Resources */,
 				514C69121DCC32EA00531B2C /* zem16.png in Resources */,
