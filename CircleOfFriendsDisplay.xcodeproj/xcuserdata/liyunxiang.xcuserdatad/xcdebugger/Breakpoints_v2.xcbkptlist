@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CircleOfFriendsDisplay/Classes/ZoneView.m"
-            timestampString = "502708711.222227"
+            timestampString = "499924140.190573"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "301"
-            endingLineNumber = "301"
-            landmarkName = "-showReplyViewWithCell:andLabelView:"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
+            landmarkName = "-image:didFinishSavingWithError:contextInfo:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
