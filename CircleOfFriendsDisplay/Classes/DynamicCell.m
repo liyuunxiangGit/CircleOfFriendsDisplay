@@ -9,11 +9,15 @@
 #import "DynamicCell.h"
 #import "TTTAttributedLabel.h"
 #import "Masonry.h"
-
+#import "WebViewController.h"
 //获取屏幕 宽度、高度
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 #define kPicDiv 4.0f
+
+@interface DynamicCell()<TTTAttributedLabelDelegate>
+
+@end
 @implementation DynamicCell
 
 -(void)setData:(DynamicItem *)data
@@ -68,11 +72,14 @@
     CGFloat bodyViewAddHight = 0;
     
     NSString *content = _data.content;
+    
     TTTAttributedLabel * contentLabel = [[TTTAttributedLabel alloc]initWithFrame:CGRectMake(0, 0, bodyViewWidth, 0)];
     contentLabel.numberOfLines = 0;
+    contentLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
+    contentLabel.delegate = self;
+    
     if (content != nil && content.length > 0 ) {
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
-//        paragraphStyle.lineHeightMultiple = 10.f;
         paragraphStyle.maximumLineHeight = 18.0f;
         paragraphStyle.minimumLineHeight = 16.0f;
         paragraphStyle.firstLineHeadIndent = 0.0f;
@@ -84,23 +91,51 @@
         UIFont *font = [UIFont systemFontOfSize:14];
         NSDictionary *attributes = @{ NSFontAttributeName:font, NSParagraphStyleAttributeName:paragraphStyle};
         contentLabel.attributedText = [[NSAttributedString alloc]initWithString:content attributes:attributes];
-        contentLabel.textColor = [UIColor blackColor];
+//        contentLabel.textColor = [UIColor blackColor];
         CGSize size = CGSizeMake(bodyViewWidth, 1000.0f);
         CGSize finalSize = [contentLabel sizeThatFits:size];
         contentLabel.frame = CGRectMake(0, 0, finalSize.width, finalSize.height);
         
+        //利用富文本实现URL的点击事件http://blog.csdn.net/liyunxiangrxm/article/details/53410919
+        contentLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        contentLabel.linkAttributes = @{(NSString *)kCTUnderlineStyleAttributeName : [NSNumber numberWithBool:YES],
+                                        (NSString*)kCTForegroundColorAttributeName : (id)[[UIColor blueColor] CGColor]};
+        
+        contentLabel.highlightedTextColor = [UIColor whiteColor];
+        contentLabel.verticalAlignment = TTTAttributedLabelVerticalAlignmentTop;
+        // end modify by huangyibiao
+        
+        // reasion: handle links in chat content, ananylizing each link
+        // 提取出文本中的超链接
+        NSError *error;
+        NSString *regulaStr = @"((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regulaStr
+                                                                               options:NSRegularExpressionCaseInsensitive
+                                                                                 error:&error];
+        NSArray *arrayOfAllMatches = [regex matchesInString:content
+                                                    options:0
+                                                      range:NSMakeRange(0, [content length])];
+        NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc] initWithString:content];
+        for (NSTextCheckingResult *match in arrayOfAllMatches) {
+            NSString *substringForMatch = [content substringWithRange:match.range];
+            [attribute addAttribute:(NSString *)kCTFontAttributeName value:(id)contentLabel.font range:match.range];
+            [attribute addAttribute:(NSString*)kCTForegroundColorAttributeName
+                              value:(id)[[UIColor blueColor] CGColor]
+                              range:match.range];
+            [contentLabel addLinkToURL:[NSURL URLWithString:substringForMatch] withRange:match.range];
+        }
+
+        
+        //文本增加长按手势
         contentLabel.userInteractionEnabled = YES;
         UILongPressGestureRecognizer *longTap = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressText:)];
         [contentLabel addGestureRecognizer:longTap];
-        
-
         contentLabel.frame = CGRectMake(0, 0, finalSize.width, finalSize.height);
-        
         bodyViewAddHight = 0;
-   
         }
     
 
+   
     
     if (_imgArray == nil) {
         _imgArray = [[NSMutableArray alloc]init];
@@ -218,6 +253,16 @@
         [self.bodyView addSubview:iv];
     }
 
+}
+#pragma mark - TTTAttributedLabelDelegate 点击聊天内容中的超链接
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
+    NSLog([NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil]);
+    if (_delegate && [_delegate respondsToSelector:@selector(onPressShareUrlOnUrl:)]) {
+        [_delegate onPressShareUrlOnUrl:url];
+    }
+
+    
+    
 }
 - (void)longPressText:(UILongPressGestureRecognizer *)sender{
     NSLog(@"长按");

@@ -14,6 +14,7 @@
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "IDMPhotoBrowser.h"
 #import "ZoneReplyView.h"
+#import "WebViewController.h"
 #define Tag_MyReplySheetShow 0x01
 #define Tag_LongPressTextSheetShow 0x02
 #define Tag_LongPressPicSheetShow 0x03
@@ -181,6 +182,12 @@
     UIView *view =[ [UIView alloc]init];
     view.backgroundColor = [UIColor clearColor];
     [tableView setTableFooterView:view];
+}
+-(void)onPressShareUrlOnUrl:(NSURL *)url
+{
+    WebViewController *webViewController = [[WebViewController alloc]init];
+    webViewController.url = url;
+    [_fVC.navigationController presentViewController:webViewController animated:YES completion:nil];
 }
 - (void)onPressImageView:(UIImageView *)imageView onDynamicCell:(DynamicCell *)cell{
     DynamicItem *item = cell.data;

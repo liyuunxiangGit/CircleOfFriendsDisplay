@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		176F386A1DA5D545724AA609 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D66C9E259F49710A9B00192B /* libPods.a */; };
+		512752521DF6B768008F61A5 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 512752511DF6B768008F61A5 /* WebViewController.m */; };
 		514C67841DCC32E200531B2C /* DynamicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C677B1DCC32E200531B2C /* DynamicCell.m */; };
 		514C67851DCC32E200531B2C /* DynamicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C677D1DCC32E200531B2C /* DynamicItem.m */; };
 		514C67861DCC32E200531B2C /* GetInfoSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C677F1DCC32E200531B2C /* GetInfoSection.m */; };
@@ -355,6 +356,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		512752501DF6B768008F61A5 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		512752511DF6B768008F61A5 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		514C677A1DCC32E200531B2C /* DynamicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicCell.h; sourceTree = "<group>"; };
 		514C677B1DCC32E200531B2C /* DynamicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicCell.m; sourceTree = "<group>"; };
 		514C677C1DCC32E200531B2C /* DynamicItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicItem.h; sourceTree = "<group>"; };
@@ -913,6 +916,8 @@
 				514C67811DCC32E200531B2C /* ViewController.m */,
 				514C67821DCC32E200531B2C /* ZoneView.h */,
 				514C67831DCC32E200531B2C /* ZoneView.m */,
+				512752501DF6B768008F61A5 /* WebViewController.h */,
+				512752511DF6B768008F61A5 /* WebViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -2356,6 +2361,7 @@
 				514C68E71DCC32EA00531B2C /* IDMCaptionView.m in Sources */,
 				5170816A1DD1B42A00DCED48 /* DFBaseTimeLineViewController.m in Sources */,
 				514C69881DCC32EB00531B2C /* UITableView+FDTemplateLayoutCell.m in Sources */,
+				512752521DF6B768008F61A5 /* WebViewController.m in Sources */,
 				514C67861DCC32E200531B2C /* GetInfoSection.m in Sources */,
 				517081E51DD1B42A00DCED48 /* DFVideoPreViewController.m in Sources */,
 				517081E41DD1B42A00DCED48 /* UIImageView+MJWebCache.m in Sources */,

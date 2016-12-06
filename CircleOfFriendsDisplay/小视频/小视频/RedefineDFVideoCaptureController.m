@@ -9,7 +9,6 @@
 #import "RedefineDFVideoCaptureController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-
 #import "DFVideoPreViewController.h"
 
 #define SHOWRATE 1

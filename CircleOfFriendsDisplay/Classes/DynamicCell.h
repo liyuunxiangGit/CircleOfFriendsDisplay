@@ -26,7 +26,7 @@
 - (void)onLongPressText:(NSString *)text onDynamicCell:(DynamicCell *)cell;
 - (void)onLongPressImageView:(UIImageView *)imageView onDynamicCell:(DynamicCell *)cell;
 - (void)onLongPressShareUrlOnDynamicCell:(DynamicCell *)cell;
-
+- (void)onPressShareUrlOnUrl:(NSURL *)url;
 - (void)onPressReSendOnDynamicCell:(DynamicCell *)cell;
 
 @end

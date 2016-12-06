@@ -40,6 +40,7 @@
 {
     [super viewDidAppear:animated];
     
+
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     
     [self addNotification];

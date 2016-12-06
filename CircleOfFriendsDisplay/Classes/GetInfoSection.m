@@ -21,7 +21,7 @@
                         @{
                             @"name": @"SIZE潮流生活",
                             @"avatar": @"http://tp2.sinaimg.cn/1829483361/50/5753078359/1",
-                            @"content": @"近日[心]，adidas Originals为经典鞋款Stan Smith打造Primeknit版本，并带来全新的“OG”系列。简约的鞋身采用白色透气Primeknit针织材质制作，再将Stan Smith代表性的绿、红、深蓝三个元年色调融入到鞋舌和后跟点缀，最后搭载上米白色大底来保留其复古风味。据悉该鞋款将在今月登陆全球各大adidas Originals指定店舖。",
+                            @"content": @"近日[心]，adidas Originals为经典鞋款Stan Smith打造Primeknit版本，并带来全新的“OG”系列。简约的鞋身采用白色透气Primeknit针织材质制作， www.baidu.com 再将Stan Smith代表性的绿、红、深蓝三个元年色调融入到鞋舌和后跟点缀，最后搭载上米白色大底来保留其复古风味。据悉该鞋款将在今月登陆全球各大adidas Originals指定店舖。 http://blog.csdn.net/liyunxiangrxm/article/details/52082884 ",
                             @"date": @"1459668442",
                             @"time":@"08/29 10:25",
                             @"imgs": @[@"http://ww2.sinaimg.cn/mw690/6d0bb361gw1f2jim2hgxij20lo0egwgc.jpg",
@@ -52,7 +52,7 @@
                         @{
                             @"name": @"妖妖小精",
                             @"avatar": @"http://tp2.sinaimg.cn/2185608961/50/5714822219/0",
-                            @"content": @"出国留学的儿子为思念自己的家人们寄来一个用自己照片做成的人形立牌",
+                            @"content": @"出国留学的儿子为思念自己的家人们寄来一个用自己照片做成的人形立牌，本人博客：富文本的使用 http://blog.csdn.net/liyunxiangrxm/article/details/52046038",
                             @"date": @"1459668442",
                             @"time":@"08/29 10:25",
                             @"imgs": @[
@@ -117,7 +117,7 @@
                         @{
                             @"name": @"Kindle中国",
                             @"avatar": @"http://tp1.sinaimg.cn/3262223112/50/5684307907/1",
-                            @"content": @"#只限今日#《简单的逻辑学》作者D.Q.麦克伦尼在书中提出了28种非逻辑思维形式，抛却了逻辑学一贯的刻板理论，转而以轻松的笔触带领我们畅游这个精彩无比的逻辑世界；《蝴蝶梦》我错了，我曾以为付出自己就是爱你。全球公认20世纪伟大的爱情经典，大陆独家合法授权。",
+                            @"content": @"#只限今日#《简单的逻辑学》作者D.Q.麦克伦尼在书中提出了28种非逻辑思维形式，http://blog.csdn.net/liyunxiangrxm/article/details/53410821 凡是抛却了逻辑学一贯的刻板理论，转而以轻松的笔触带领我们畅游这个精彩无比的逻辑世界；《蝴蝶梦》我错了，我曾以为付出自己就是爱你。全球公认20世纪伟大的爱情经典，大陆独家合法授权。",
                             @"date": @"",
                             @"time":@"08/29 10:25",
                             @"imgs": @[
