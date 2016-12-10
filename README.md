@@ -79,9 +79,9 @@
 ##富文本的使用 TTTAttributedLabel
 * 使用 TTTAttributedLabel的富文本，可以调节文章中的字体的大小，文字间隔，行间距等。<br>
 * 使用 TTTAttributedLabel还可以起到的作用是可以识别发表的文字中的链接，点击可以进入该链接的网页。<br>
-####对于富文本的讲解：<br>
+* 对于富文本的讲解：<br>
 [富文本的讲解-如下博客：http://blog.csdn.net/liyunxiangrxm/article/details/53410919](http://blog.csdn.net/liyunxiangrxm/article/details/53410919)<br>
-####富文本效果图如下：<br>
+* 富文本效果图如下：<br>
 ![image](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/富文本.png)<br>
 
 ##
