@@ -1,10 +1,6 @@
 //
 //  ZoneReplyView.h
-//  YBT_iOS_tch
-//
-//  Created by 郭顺 on 15/11/6.
-//  Copyright © 2015年 郭顺. All rights reserved.
-//
+
 
 #import <UIKit/UIKit.h>
 #import "DynamicCell.h"

@@ -26,7 +26,7 @@
 
 @property (nonatomic, strong) NSArray *commentList;
 
-
+@property (nonatomic, assign)BOOL textOpenFlag;
 
 -(id)initWithDict:(NSDictionary *)dict;
 +(id)dynamicWithDict:(NSDictionary *)dict;

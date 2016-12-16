@@ -16,7 +16,7 @@
 #define kPicDiv 4.0f
 
 @interface DynamicCell()<TTTAttributedLabelDelegate>
-
+@property (strong,nonatomic) UIButton * moreBtn;
 @end
 @implementation DynamicCell
 
@@ -70,6 +70,7 @@
 {
     CGFloat bodyViewWidth = SCREEN_WIDTH - 60 - 32;
     CGFloat bodyViewAddHight = 0;
+    BOOL showMoreBtn = NO;
     
     NSString *content = _data.content;
     
@@ -132,9 +133,58 @@
         [contentLabel addGestureRecognizer:longTap];
         contentLabel.frame = CGRectMake(0, 0, finalSize.width, finalSize.height);
         bodyViewAddHight = 0;
+        
+        
+        if(finalSize.height > 144.0){
+            if (_data.textOpenFlag == NO) {
+                contentLabel.frame = CGRectMake(0, 0, finalSize.width, 144);
+                _moreBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                _moreBtn.frame = CGRectMake(0, 0, 50, 20);
+                [_moreBtn setContentMode:UIViewContentModeLeft];
+                _moreBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+                [_moreBtn setTitleColor:[UIColor brownColor] forState:UIControlStateNormal];
+                [_moreBtn addTarget:self action:@selector(showMore) forControlEvents:UIControlEventTouchUpInside];
+                UIEdgeInsets titileEdgeInset = UIEdgeInsetsMake(-10, 0, 0, 0);
+                _moreBtn.titleEdgeInsets = titileEdgeInset;
+                
+                CGRect moreBtnFrame = _moreBtn.frame;
+                moreBtnFrame.origin.y = contentLabel.frame.origin.y + contentLabel.frame.size.height;
+                _moreBtn.frame = moreBtnFrame;
+//                [self.bodyView addSubview:_moreBtn];
+                bodyViewAddHight = 20;
+                [_moreBtn setTitle:@"全文" forState:UIControlStateNormal];
+                showMoreBtn = YES;
+            }else{
+                contentLabel.frame = CGRectMake(0, 0, finalSize.width, finalSize.height);
+                _moreBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                _moreBtn.frame = CGRectMake(0, 0, 30, 20);
+                _moreBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+                [_moreBtn setTitleColor:[UIColor brownColor] forState:UIControlStateNormal];
+                [_moreBtn addTarget:self action:@selector(showMore) forControlEvents:UIControlEventTouchUpInside];
+                UIEdgeInsets titileEdgeInset = UIEdgeInsetsMake(0, 0, 0, 0);
+                _moreBtn.titleEdgeInsets = titileEdgeInset;
+                
+                CGRect moreBtnFrame = _moreBtn.frame;
+                moreBtnFrame.origin.y = contentLabel.frame.origin.y + contentLabel.frame.size.height;
+                _moreBtn.frame = moreBtnFrame;
+//                [self.bodyView addSubview:_moreBtn];
+                bodyViewAddHight = 20;
+                [_moreBtn setTitle:@"收起" forState:UIControlStateNormal];
+                showMoreBtn = YES;
+            }
+        }else{
+            contentLabel.frame = CGRectMake(0, 0, finalSize.width, finalSize.height);
+            _moreBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            
+            bodyViewAddHight = 0;
+            showMoreBtn = NO;
         }
+        
+    }
     
-
+        
+    
+    
    
     
     if (_imgArray == nil) {
@@ -152,7 +202,9 @@
     [_imgViewArray removeAllObjects];
     
     CGFloat fromY = contentLabel == nil?0:contentLabel.frame.size.height+10;
-    
+    if (showMoreBtn) {
+        fromY += bodyViewAddHight;
+    }
     if ([_imgArray count] == 1) {
        
         CGFloat picW = bodyViewWidth/7*3;
@@ -240,6 +292,9 @@
     
     UIImageView *lastView = [_imgViewArray objectAtIndex:([_imgViewArray count]-1) ];
     CGFloat bodyHight = lastView.frame.size.height + lastView.frame.origin.y;
+    if (showMoreBtn) {
+        bodyHight += bodyViewAddHight;
+    }
 
     self.bodyView = nil;
     self.bodyView = [[UIView alloc]initWithFrame:CGRectMake(_fromName.frame.origin.x, _fromName.frame.origin.y + _fromName.frame.size.height + 10, bodyViewWidth, bodyHight)];
@@ -247,6 +302,10 @@
     
     if(contentLabel != nil){
         [self.bodyView addSubview:contentLabel];
+        if (showMoreBtn) {
+            [self.bodyView addSubview:_moreBtn];
+        }
+
     }
     for (UIImageView *iv in _imgViewArray) {
         
@@ -254,6 +313,22 @@
     }
 
 }
+- (void)showMore{
+    if ([_moreBtn.titleLabel.text isEqualToString:@"全文"]) {
+        if (_delegate && [_delegate respondsToSelector:@selector(onPressMoreBtnOnDynamicCell:)]) {
+            //            [_moreBtn setTitle:@"收起" forState:UIControlStateNormal];
+            _data.textOpenFlag = YES;
+            [_delegate onPressMoreBtnOnDynamicCell:self];
+        }
+    }else if ([_moreBtn.titleLabel.text isEqualToString:@"收起"]){
+        if (_delegate && [_delegate respondsToSelector:@selector(onPressMoreBtnOnDynamicCell:)]) {
+            //            [_moreBtn setTitle:@"更多" forState:UIControlStateNormal];
+            _data.textOpenFlag = NO;
+            [_delegate onPressMoreBtnOnDynamicCell:self];
+        }
+    }
+}
+
 #pragma mark - TTTAttributedLabelDelegate 点击聊天内容中的超链接
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
     NSLog([NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil]);

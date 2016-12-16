@@ -126,7 +126,11 @@
 }
 
 
-
+- (void)onPressMoreBtnOnDynamicCell:(DynamicCell *)cell{
+    NSIndexPath *path = [_zoneTableView indexPathForCell:cell];
+    NSArray *paths = [[NSArray alloc]initWithObjects:path, nil];
+    [_zoneTableView reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationAutomatic];
+}
 
 #pragma mark - tableviewdelegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -187,7 +191,8 @@
 {
     WebViewController *webViewController = [[WebViewController alloc]init];
     webViewController.url = url;
-    [_fVC.navigationController presentViewController:webViewController animated:YES completion:nil];
+
+    [_fVC.navigationController pushViewController:webViewController animated:YES];
 }
 - (void)onPressImageView:(UIImageView *)imageView onDynamicCell:(DynamicCell *)cell{
     DynamicItem *item = cell.data;
