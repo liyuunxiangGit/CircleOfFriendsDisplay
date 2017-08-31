@@ -20,8 +20,7 @@
 {
     return [[self alloc]initWithDict:dict];
 }
-//- (void)setValue:(id)value forUndefinedKey:(NSString *)key  {
-//    if([key isEqualToString:@"id"])
-//        self.userid = value;
-//}
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key  {
+    
+}
 @end

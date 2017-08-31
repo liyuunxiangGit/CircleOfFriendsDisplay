@@ -26,6 +26,8 @@
 
 @property (nonatomic, strong) NSArray *commentList;
 
+@property (nonatomic, copy) NSString *MsgType;
+
 @property (nonatomic, assign)BOOL textOpenFlag;
 
 -(id)initWithDict:(NSDictionary *)dict;

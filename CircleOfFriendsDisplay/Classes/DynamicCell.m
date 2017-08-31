@@ -68,6 +68,16 @@
 }
 -(void)setBodyView
 {
+    NSString *type = _data.MsgType;
+    if ([type isEqualToString:@"text"]) {
+        [self setTextBody];
+    }else
+    {
+        [self setNewsBody];
+    }
+}
+-(void)setTextBody
+{
     CGFloat bodyViewWidth = SCREEN_WIDTH - 60 - 32;
     CGFloat bodyViewAddHight = 0;
     BOOL showMoreBtn = NO;
@@ -88,11 +98,11 @@
         paragraphStyle.firstLineHeadIndent = 0.0f;
         paragraphStyle.headIndent = 0.0f;
         paragraphStyle.alignment = NSTextAlignmentLeft;
-//
+        //
         UIFont *font = [UIFont systemFontOfSize:14];
         NSDictionary *attributes = @{ NSFontAttributeName:font, NSParagraphStyleAttributeName:paragraphStyle};
         contentLabel.attributedText = [[NSAttributedString alloc]initWithString:content attributes:attributes];
-//        contentLabel.textColor = [UIColor blackColor];
+        //        contentLabel.textColor = [UIColor blackColor];
         CGSize size = CGSizeMake(bodyViewWidth, 1000.0f);
         CGSize finalSize = [contentLabel sizeThatFits:size];
         contentLabel.frame = CGRectMake(0, 0, finalSize.width, finalSize.height);
@@ -125,7 +135,7 @@
                               range:match.range];
             [contentLabel addLinkToURL:[NSURL URLWithString:substringForMatch] withRange:match.range];
         }
-
+        
         
         //文本增加长按手势
         contentLabel.userInteractionEnabled = YES;
@@ -150,7 +160,7 @@
                 CGRect moreBtnFrame = _moreBtn.frame;
                 moreBtnFrame.origin.y = contentLabel.frame.origin.y + contentLabel.frame.size.height;
                 _moreBtn.frame = moreBtnFrame;
-//                [self.bodyView addSubview:_moreBtn];
+                //                [self.bodyView addSubview:_moreBtn];
                 bodyViewAddHight = 20;
                 [_moreBtn setTitle:@"全文" forState:UIControlStateNormal];
                 showMoreBtn = YES;
@@ -167,7 +177,7 @@
                 CGRect moreBtnFrame = _moreBtn.frame;
                 moreBtnFrame.origin.y = contentLabel.frame.origin.y + contentLabel.frame.size.height;
                 _moreBtn.frame = moreBtnFrame;
-//                [self.bodyView addSubview:_moreBtn];
+                //                [self.bodyView addSubview:_moreBtn];
                 bodyViewAddHight = 20;
                 [_moreBtn setTitle:@"收起" forState:UIControlStateNormal];
                 showMoreBtn = YES;
@@ -182,19 +192,148 @@
         
     }
     
+    //调整frame = 内容的frame高度
+    
+    
+    CGFloat bodyHight = contentLabel.frame.size.height + bodyViewAddHight;
+    self.bodyView = nil;
+    self.bodyView = [[UIView alloc]initWithFrame:CGRectMake(_fromName.frame.origin.x, _fromName.frame.origin.y + _fromName.frame.size.height + 10, bodyViewWidth, bodyHight)];
+    [self.contentView addSubview:self.bodyView];
+    [self.bodyView addSubview:contentLabel];
+    if (showMoreBtn) {
+        [self.bodyView addSubview:_moreBtn];
+    }
+
+}
+-(void)setNewsBody
+{
+    CGFloat bodyViewWidth = SCREEN_WIDTH - 60 - 32;
+    CGFloat bodyViewAddHight = 0;
+    BOOL showMoreBtn = NO;
+    
+    NSString *content = _data.content;
+    
+    TTTAttributedLabel * contentLabel = [[TTTAttributedLabel alloc]initWithFrame:CGRectMake(0, 0, bodyViewWidth, 0)];
+    contentLabel.numberOfLines = 0;
+    contentLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
+    contentLabel.delegate = self;
+    
+    if (content != nil && content.length > 0 ) {
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
+        paragraphStyle.maximumLineHeight = 18.0f;
+        paragraphStyle.minimumLineHeight = 16.0f;
+        paragraphStyle.firstLineHeadIndent = 0.0f;
+        paragraphStyle.lineSpacing = 6.0f;
+        paragraphStyle.firstLineHeadIndent = 0.0f;
+        paragraphStyle.headIndent = 0.0f;
+        paragraphStyle.alignment = NSTextAlignmentLeft;
+        //
+        UIFont *font = [UIFont systemFontOfSize:14];
+        NSDictionary *attributes = @{ NSFontAttributeName:font, NSParagraphStyleAttributeName:paragraphStyle};
+        contentLabel.attributedText = [[NSAttributedString alloc]initWithString:content attributes:attributes];
+        //        contentLabel.textColor = [UIColor blackColor];
+        CGSize size = CGSizeMake(bodyViewWidth, 1000.0f);
+        CGSize finalSize = [contentLabel sizeThatFits:size];
+        contentLabel.frame = CGRectMake(0, 0, finalSize.width, finalSize.height);
         
+        //利用富文本实现URL的点击事件http://blog.csdn.net/liyunxiangrxm/article/details/53410919
+        contentLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        contentLabel.linkAttributes = @{(NSString *)kCTUnderlineStyleAttributeName : [NSNumber numberWithBool:YES],
+                                        (NSString*)kCTForegroundColorAttributeName : (id)[[UIColor blueColor] CGColor]};
+        
+        contentLabel.highlightedTextColor = [UIColor whiteColor];
+        contentLabel.verticalAlignment = TTTAttributedLabelVerticalAlignmentTop;
+        // end modify by huangyibiao
+        
+        // reasion: handle links in chat content, ananylizing each link
+        // 提取出文本中的超链接
+        NSError *error;
+        NSString *regulaStr = @"((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regulaStr
+                                                                               options:NSRegularExpressionCaseInsensitive
+                                                                                 error:&error];
+        NSArray *arrayOfAllMatches = [regex matchesInString:content
+                                                    options:0
+                                                      range:NSMakeRange(0, [content length])];
+        NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc] initWithString:content];
+        for (NSTextCheckingResult *match in arrayOfAllMatches) {
+            NSString *substringForMatch = [content substringWithRange:match.range];
+            [attribute addAttribute:(NSString *)kCTFontAttributeName value:(id)contentLabel.font range:match.range];
+            [attribute addAttribute:(NSString*)kCTForegroundColorAttributeName
+                              value:(id)[[UIColor blueColor] CGColor]
+                              range:match.range];
+            [contentLabel addLinkToURL:[NSURL URLWithString:substringForMatch] withRange:match.range];
+        }
+        
+        
+        //文本增加长按手势
+        contentLabel.userInteractionEnabled = YES;
+        UILongPressGestureRecognizer *longTap = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressText:)];
+        [contentLabel addGestureRecognizer:longTap];
+        contentLabel.frame = CGRectMake(0, 0, finalSize.width, finalSize.height);
+        bodyViewAddHight = 0;
+        
+        
+        if(finalSize.height > 144.0){
+            if (_data.textOpenFlag == NO) {
+                contentLabel.frame = CGRectMake(0, 0, finalSize.width, 144);
+                _moreBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                _moreBtn.frame = CGRectMake(0, 0, 50, 20);
+                [_moreBtn setContentMode:UIViewContentModeLeft];
+                _moreBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+                [_moreBtn setTitleColor:[UIColor brownColor] forState:UIControlStateNormal];
+                [_moreBtn addTarget:self action:@selector(showMore) forControlEvents:UIControlEventTouchUpInside];
+                UIEdgeInsets titileEdgeInset = UIEdgeInsetsMake(-10, 0, 0, 0);
+                _moreBtn.titleEdgeInsets = titileEdgeInset;
+                
+                CGRect moreBtnFrame = _moreBtn.frame;
+                moreBtnFrame.origin.y = contentLabel.frame.origin.y + contentLabel.frame.size.height;
+                _moreBtn.frame = moreBtnFrame;
+                //                [self.bodyView addSubview:_moreBtn];
+                bodyViewAddHight = 20;
+                [_moreBtn setTitle:@"全文" forState:UIControlStateNormal];
+                showMoreBtn = YES;
+            }else{
+                contentLabel.frame = CGRectMake(0, 0, finalSize.width, finalSize.height);
+                _moreBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                _moreBtn.frame = CGRectMake(0, 0, 30, 20);
+                _moreBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+                [_moreBtn setTitleColor:[UIColor brownColor] forState:UIControlStateNormal];
+                [_moreBtn addTarget:self action:@selector(showMore) forControlEvents:UIControlEventTouchUpInside];
+                UIEdgeInsets titileEdgeInset = UIEdgeInsetsMake(0, 0, 0, 0);
+                _moreBtn.titleEdgeInsets = titileEdgeInset;
+                
+                CGRect moreBtnFrame = _moreBtn.frame;
+                moreBtnFrame.origin.y = contentLabel.frame.origin.y + contentLabel.frame.size.height;
+                _moreBtn.frame = moreBtnFrame;
+                //                [self.bodyView addSubview:_moreBtn];
+                bodyViewAddHight = 20;
+                [_moreBtn setTitle:@"收起" forState:UIControlStateNormal];
+                showMoreBtn = YES;
+            }
+        }else{
+            contentLabel.frame = CGRectMake(0, 0, finalSize.width, finalSize.height);
+            _moreBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            
+            bodyViewAddHight = 0;
+            showMoreBtn = NO;
+        }
+        
+    }
     
     
-   
+    
+    
+    
     
     if (_imgArray == nil) {
         _imgArray = [[NSMutableArray alloc]init];
     }
     [_imgArray removeAllObjects];
     
-  
+    
     [_imgArray addObjectsFromArray:_data.imgs];
-  
+    
     
     if (_imgViewArray == nil) {
         _imgViewArray = [[NSMutableArray alloc]init];
@@ -206,7 +345,7 @@
         fromY += bodyViewAddHight;
     }
     if ([_imgArray count] == 1) {
-       
+        
         CGFloat picW = bodyViewWidth/7*3;
         UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, fromY, picW, picW)];
         imageView.tag = 0;
@@ -224,10 +363,10 @@
         CGFloat imgWidth = (bodyViewWidth - 2 * kPicDiv)/3;
         UIImageView *imageView1 = [[UIImageView alloc]initWithFrame:CGRectMake(0, fromY, imgWidth, imgWidth)];
         
-
-
+        
+        
         [imageView1 sd_setImageWithURL:[NSURL URLWithString:_imgArray[0]]];
-
+        
         
         //        [imageView1 sd_setImageWithURL:[NSURL URLWithString:item[@"FileUrl"]]];
         imageView1.tag = 0;
@@ -239,9 +378,9 @@
         [_imgViewArray addObject:imageView1];
         
         UIImageView *imageView2 = [[UIImageView alloc]initWithFrame:CGRectMake(imgWidth+kPicDiv,fromY, imgWidth, imgWidth)];
-       
-     
-       
+        
+        
+        
         [imageView2 sd_setImageWithURL:[NSURL URLWithString:_imgArray[1]]];
         
         //        [imageView2 sd_setImageWithURL:[NSURL URLWithString:item[@"FileUrl"]]];
@@ -256,8 +395,8 @@
         CGFloat imgWidth = (bodyViewWidth - 2 * kPicDiv)/3;
         for (int i=0; i<[_imgArray count]; i++) {
             UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake((i%2)*(imgWidth+kPicDiv), (i/2)*(imgWidth+kPicDiv) + fromY, imgWidth, imgWidth)];
-
-                [imageView sd_setImageWithURL:[NSURL URLWithString:_imgArray[i]]];
+            
+            [imageView sd_setImageWithURL:[NSURL URLWithString:_imgArray[i]]];
             imageView.backgroundColor = [UIColor redColor];
             //            [imageView sd_setImageWithURL:[NSURL URLWithString:item[@"FileUrl"]]];
             imageView.tag = i;
@@ -273,10 +412,10 @@
         CGFloat imgWidth = (bodyViewWidth - 2 * kPicDiv)/3;
         for (int i=0; i<[_imgArray count]; i++) {
             UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake((i%3)*(imgWidth+kPicDiv), (i/3)*(imgWidth+kPicDiv) + fromY, imgWidth, imgWidth)];
-
-
+            
+            
             [imageView sd_setImageWithURL:[NSURL URLWithString:_imgArray[i]]];
-
+            
             //            [imageView sd_setImageWithURL:[NSURL URLWithString:item[@"FileUrl"]]];
             imageView.tag = i;
             [_imgViewArray addObject:imageView];
@@ -295,7 +434,7 @@
     if (showMoreBtn) {
         bodyHight += bodyViewAddHight;
     }
-
+    
     self.bodyView = nil;
     self.bodyView = [[UIView alloc]initWithFrame:CGRectMake(_fromName.frame.origin.x, _fromName.frame.origin.y + _fromName.frame.size.height + 10, bodyViewWidth, bodyHight)];
     [self.contentView addSubview:self.bodyView];
@@ -305,13 +444,13 @@
         if (showMoreBtn) {
             [self.bodyView addSubview:_moreBtn];
         }
-
+        
     }
     for (UIImageView *iv in _imgViewArray) {
         
         [self.bodyView addSubview:iv];
     }
-
+    
 }
 - (void)showMore{
     if ([_moreBtn.titleLabel.text isEqualToString:@"全文"]) {
