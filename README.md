@@ -1,13 +1,13 @@
 # CircleOfFriendsDisplay
-######小项目还未完善，一直在更新，欢迎star   欢迎提bug以便改进  以便互相进步
-#####朋友圈的做法
+###### 小项目还未完善，一直在更新，欢迎star   欢迎提bug以便改进  以便互相进步
+##### 朋友圈的做法
 
 [TOC]
 
 ![展示图](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/112.gif)
-####[我的博客](http://blog.csdn.net/liyunxiangrxm)
-##运用MVC设计模式
-####`MVC` 是苹果公司最热衷的一种架构模式<br>
+#### [我的博客](http://blog.csdn.net/liyunxiangrxm)
+## 运用MVC设计模式
+#### `MVC` 是苹果公司最热衷的一种架构模式<br>
 * `M`: model的缩写  模型层的简称<br>
  * model层用来存放整个工程中需要的所有数据 (实体类的创建、数据的请求、数据持久性存储等操作都是写在model层的)<br>
 * `C`: controller的缩写 控制层的简称<br>
@@ -16,7 +16,7 @@
 * `V`: view的缩写 视图层的简称<br>
  * view层主要听从controller的指挥显示model层的数据<br>
 
-####app中用到的MVC设计模式详解
+#### app中用到的MVC设计模式详解
 * 在ViewController控制其中，我么只做了两件事情
   * 1、通过数据请求的类`GetInfoSection`将数据请求下来保存在数组当中
   * 2、new一个view`ZoneView`并加载在该控制器当中，然后给该view传递数据过去。<br>
@@ -40,7 +40,7 @@
 }
 ```
 
-##上下拉刷新功能
+## 上下拉刷新功能
 * 上下拉刷新用的是MJRefresh 
 * [MJRefresh](https://github.com/CoderMJLee/MJRefresh#Support%20what%20kinds%20of%20controls%20to%20refresh) 点击看详情
 * ```
@@ -69,14 +69,14 @@
    数据的刷新。
 * 基本就是这样一个流程，接下来讲讲推送。
 
-##新增小视频功能：
+## 新增小视频功能：
 [讲解小视频](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/小视频-班级圈发送/index.html)<br>
 ![image](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/IMG_1470.PNG)
 ![image](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/IMG_1471.PNG)
 ![image](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/IMG_1472.PNG)
 ![image](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/IMG_1473.PNG)<br>
 
-##富文本的使用 TTTAttributedLabel
+## 富文本的使用 TTTAttributedLabel
 * 使用 TTTAttributedLabel的富文本，可以调节文章中的字体的大小，文字间隔，行间距等。<br>
 * 使用 TTTAttributedLabel还可以起到的作用是可以识别发表的文字中的链接，点击可以进入该链接的网页。<br>
 * 对于富文本的讲解：<br>
