@@ -58,7 +58,7 @@
 *```
 * 然后再dynamicTableViewheaderRereshing方法中进行数据请求，最终增加到总得数组中，然后tableView reloadDate.
 
-##消息传递的做法（我用的是推送:[个推](http://www.getui.com)）
+## 消息传递的做法（我用的是推送:[个推](http://www.getui.com)）
 * 做朋友圈当然要进行消息的传递（例如评论，点赞等）
 * 我的想法就是当我们评论完成点击发送或者return的时候：
  *  tableViewCell中的代理方法会被触发，然后在tableView界面进行操作：键盘收起
