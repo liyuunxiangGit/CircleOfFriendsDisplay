@@ -6,7 +6,7 @@
 
 ![展示图](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/112.gif)
 #### [我的博客](http://blog.csdn.net/liyunxiangrxm)
-## 运用MVC设计模式
+## 运用`MVC`设计模式
 #### `MVC` 是苹果公司最热衷的一种架构模式<br>
 * `M`: model的缩写  模型层的简称<br>
  * model层用来存放整个工程中需要的所有数据 (实体类的创建、数据的请求、数据持久性存储等操作都是写在model层的)<br>
@@ -41,7 +41,7 @@
 ```
 
 ## 上下拉刷新功能
-* 上下拉刷新用的是MJRefresh 
+* 上下拉刷新用的是`MJRefresh `
 * [MJRefresh](https://github.com/CoderMJLee/MJRefresh#Support%20what%20kinds%20of%20controls%20to%20refresh) 点击看详情
 * ```
   //首页动态的下拉与上拉
@@ -58,7 +58,7 @@
 *```
 * 然后再dynamicTableViewheaderRereshing方法中进行数据请求，最终增加到总得数组中，然后tableView reloadDate.
 
-## 消息传递的做法（我用的是推送:[个推](http://www.getui.com)）
+## 消息传递的做法（我用的是推送:[`个推`](http://www.getui.com)）
 * 做朋友圈当然要进行消息的传递（例如评论，点赞等）
 * 我的想法就是当我们评论完成点击发送或者return的时候：
  *  tableViewCell中的代理方法会被触发，然后在tableView界面进行操作：键盘收起
@@ -70,7 +70,7 @@
 * 基本就是这样一个流程，接下来讲讲推送。
 
 ## 新增小视频功能：
-[讲解小视频](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/小视频-班级圈发送/index.html)<br>
+[`讲解小视频`](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/小视频-班级圈发送/index.html)<br>
 ![image](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/IMG_1470.PNG)
 ![image](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/IMG_1471.PNG)
 ![image](https://github.com/liyuunxiangGit/CircleOfFriendsDisplay/blob/master/动图/IMG_1472.PNG)
