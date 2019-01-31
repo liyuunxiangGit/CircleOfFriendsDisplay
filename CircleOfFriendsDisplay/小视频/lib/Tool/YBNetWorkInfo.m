@@ -1,7 +1,5 @@
 //
-//  YBNetWorkInfo.m
 
-//
 
 #import "YBNetWorkInfo.h"
 #import "AppDelegate.h"
