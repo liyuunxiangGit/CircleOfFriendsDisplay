@@ -2064,7 +2064,7 @@
 				TargetAttributes = {
 					51FC21341D936FE80002E3FF = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = CFVP75NXKS;
+						DevelopmentTeam = NG2SQ4SQHH;
 					};
 					51FC214D1D936FE90002E3FF = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -2634,8 +2634,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = CFVP75NXKS;
+				DEVELOPMENT_TEAM = NG2SQ4SQHH;
 				INFOPLIST_FILE = CircleOfFriendsDisplay/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nm-xxt.CircleOfFriendsDisplay";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2649,8 +2650,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = CFVP75NXKS;
+				DEVELOPMENT_TEAM = NG2SQ4SQHH;
 				INFOPLIST_FILE = CircleOfFriendsDisplay/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nm-xxt.CircleOfFriendsDisplay";
 				PRODUCT_NAME = "$(TARGET_NAME)";

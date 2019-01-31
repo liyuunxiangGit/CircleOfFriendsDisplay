@@ -1,9 +1,6 @@
 //
 //  YBNetWorkInfo.m
-//  YBT_iOS_tch
-//
-//  Created by 郭顺 on 16/1/11.
-//  Copyright © 2016年 郭顺. All rights reserved.
+
 //
 
 #import "YBNetWorkInfo.h"
@@ -14,6 +11,23 @@
     CTTelephonyNetworkInfo *networkStatus = [[CTTelephonyNetworkInfo alloc]init];  //创建一个CTTelephonyNetworkInfo对象
     NSString *currentStatus  = networkStatus.currentRadioAccessTechnology; //获取当前网络描述
     NSLog(@"currentStatus=%@",networkStatus.currentRadioAccessTechnology);
+    if ([currentStatus isEqualToString:@"CTRadioAccessTechnologyCDMAEVDORevA"]){
+        //CDMA的EVDORevA(应该也算3G吧?)
+        return @"CDMAEVDORevA";
+    }
+    if ([currentStatus isEqualToString:@"CTRadioAccessTechnologyCDMAEVDORevB"]){
+        //CDMA的EVDORev0(应该还是算3G吧?)
+        return @"CDMAEVDORevB";
+    }
+    if ([currentStatus isEqualToString:@"CTRadioAccessTechnologyeHRPD"]){
+        //HRPD网络
+        return @"HRPD";
+    }
+    if ([currentStatus isEqualToString:@"CTRadioAccessTechnologyLTE"]){
+        //LTE4G网络
+        return @"LTE";
+    }
+    
     if ([currentStatus isEqualToString:@"CTRadioAccessTechnologyGPRS"]){
         //GPRS网络
         return @"GPRS";
@@ -42,28 +56,17 @@
         //CDMA的EVDORev0(应该算3G吧?)
         return @"EVDORev0";
     }
-    if ([currentStatus isEqualToString:@"CTRadioAccessTechnologyCDMAEVDORevA"]){
-        //CDMA的EVDORevA(应该也算3G吧?)
-        return @"CDMAEVDORevA";
-    }
-    if ([currentStatus isEqualToString:@"CTRadioAccessTechnologyCDMAEVDORevB"]){
-        //CDMA的EVDORev0(应该还是算3G吧?)
-        return @"CDMAEVDORevB";
-    }
-    if ([currentStatus isEqualToString:@"CTRadioAccessTechnologyeHRPD"]){
-        //HRPD网络
-        return @"HRPD";
-    }
-    if ([currentStatus isEqualToString:@"CTRadioAccessTechnologyLTE"]){
-        //LTE4G网络
-        return @"LTE";
-    }
+
     return currentStatus;
 }
 
 + (NSString *)getCurrentUserNetInfo{
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    
     NSLog(@"当前网络:%@",delegate.netType);
+    
+    
     return delegate.netType;
 }
 

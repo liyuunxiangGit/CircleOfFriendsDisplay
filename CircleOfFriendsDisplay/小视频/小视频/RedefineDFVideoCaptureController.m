@@ -1,9 +1,6 @@
 //
 //  RedefineDFVideoCaptureController.m
-//  YBT_iOS_tch
-//
-//  Created by shaveKevin on 16/4/21.
-//  Copyright © 2016年 郭顺. All rights reserved.
+
 //
 
 #import "RedefineDFVideoCaptureController.h"

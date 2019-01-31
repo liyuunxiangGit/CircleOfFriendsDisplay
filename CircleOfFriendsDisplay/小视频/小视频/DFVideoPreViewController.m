@@ -1,15 +1,14 @@
 //
 //  DFVideoPlayController.m
-//  MongoIM
-//
-//  Created by Allen Zhong on 16/2/14.
-//  Copyright © 2016年 MongoIM. All rights reserved.
+
 //
 
 
 #import "DFVideoPreViewController.h"
 #import "DQAlertView.h"
 #import <AVFoundation/AVFoundation.h>
+
+
 #import "YBNetWorkInfo.h"
 
 @interface DFVideoPreViewController()
@@ -144,8 +143,11 @@
 }
 //发送
 -(void)sendBtn_click:(id)sender{
+    
+    
     NSString *netType = [YBNetWorkInfo getCurrentUserNetInfo];
 
+    
     if(![netType isEqualToString:@"wifi"]){//不是wifi环境，提醒用户
         DQAlertView *alertDialog = [[DQAlertView alloc]initWithTitle:nil message:@"非wifi环境下发布，需消耗流量，是否继续发布？"  cancelButtonTitle:@"取消" otherButtonTitle:@"确定"];
         alertDialog.titleHeight = 0;
