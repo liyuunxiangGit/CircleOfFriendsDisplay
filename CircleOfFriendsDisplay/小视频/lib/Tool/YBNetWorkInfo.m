@@ -5,7 +5,7 @@
 #import "AppDelegate.h"
 @implementation YBNetWorkInfo
 
-+ (NSString *)getNetInfo{
++ (NSString *)getNetInfomation{
     CTTelephonyNetworkInfo *networkStatus = [[CTTelephonyNetworkInfo alloc]init];  //创建一个CTTelephonyNetworkInfo对象
     NSString *currentStatus  = networkStatus.currentRadioAccessTechnology; //获取当前网络描述
     NSLog(@"currentStatus=%@",networkStatus.currentRadioAccessTechnology);
@@ -58,14 +58,16 @@
     return currentStatus;
 }
 
-+ (NSString *)getCurrentUserNetInfo{
++ (NSString *)getNowUserNetInfomation{
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     
-    NSLog(@"当前网络:%@",delegate.netType);
+    NSLog(@"当前  网络  是:%@",delegate.netType);
     
     
     return delegate.netType;
 }
-
++ (NSString *)getid{
+    return @"hahha";
+}
 @end

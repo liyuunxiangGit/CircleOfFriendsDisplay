@@ -145,10 +145,10 @@
 -(void)sendBtn_click:(id)sender{
     
     
-    NSString *netType = [YBNetWorkInfo getCurrentUserNetInfo];
+    NSString *netType = [YBNetWorkInfo getNowUserNetInfomation];
 
     
-    if(![netType isEqualToString:@"wifi"]){//不是wifi环境，提醒用户
+    if(![netType isEqualToString:@"wifi"]){//if  ! wifi环境，  提醒用户
         DQAlertView *alertDialog = [[DQAlertView alloc]initWithTitle:nil message:@"非wifi环境下发布，需消耗流量，是否继续发布？"  cancelButtonTitle:@"取消" otherButtonTitle:@"确定"];
         alertDialog.titleHeight = 0;
         alertDialog.messageLabel.font = [UIFont systemFontOfSize:16];

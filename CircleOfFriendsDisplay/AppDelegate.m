@@ -42,7 +42,7 @@
         if (status == AFNetworkReachabilityStatusReachableViaWiFi) {
             weakSelf.netType = @"wifi";
         }else if (status == AFNetworkReachabilityStatusReachableViaWWAN){
-            weakSelf.netType = [YBNetWorkInfo getNetInfo];
+            weakSelf.netType = [YBNetWorkInfo getNetInfomation];
         }else{
             weakSelf.netType = @"invalid";
         }

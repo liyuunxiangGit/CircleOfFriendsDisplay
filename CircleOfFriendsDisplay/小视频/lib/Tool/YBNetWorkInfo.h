@@ -6,7 +6,11 @@
 
 @interface YBNetWorkInfo : NSObject
 
-+ (NSString *)getNetInfo;
-+ (NSString *)getCurrentUserNetInfo;
++ (NSString *)getNetInfomation;
+
+
++ (NSString *)getNowUserNetInfomation;
+
++ (NSString *)getid;
 
 @end
